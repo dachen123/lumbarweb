@@ -3,7 +3,7 @@ BASE_PATH=$CM_BACKEND_DIR
 SCRIPT_PATH=$BASE_PATH/cm_web/script
 CONF_PATH=$SCRIPT_PATH
 EXE_PATH=/home/lumbarv2/project/venv/bin
-PID_FILE=/var/run/lumbarv2_web/gunicorn/gunicorn_cmweb.pid
+PID_FILE=/var/run/lumbarv2_web/gunicorn/gunicorn_lumbarv2_web.pid
 
 export PROJ_PATH=$BASE_PATH
 export PYTHONPATH=$CM_BACKEND_DIR:$PYTHONPATH
@@ -27,7 +27,7 @@ case $1 in
 	$0 start
 	;;
     'status')
-	ids=`pgrep cmweb_gunicorn`
+	ids=`pgrep lumbarv2_web_gunicorn`
 	echo "正在活动的gunicorn父进程号(需要root权限才能杀): $ids"
 	;;
     *)                                                                                    

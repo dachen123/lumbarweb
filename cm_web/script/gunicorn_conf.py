@@ -29,9 +29,9 @@ daemon = True
 
 debug=False
 
-pidfile = '/var/run/lumbarv2_web/gunicorn/gunicorn_cmweb.pid'
-user = 'cmweb'
-group = 'cmweb'
+pidfile = '/var/run/lumbarv2_web/gunicorn/gunicorn_lumbarv2_web.pid'
+user = 'lumbarv2'
+group = 'lumbarv2'
 
 x_forwarded_for_header = 'X-FORWARDED-FOR'
 
