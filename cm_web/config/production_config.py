@@ -15,7 +15,7 @@ class Config( object ):
     postgres config
     """
     SQLALCHEMY_DATABASE_URI = \
-            "postgresql+psycopg2://cmweb:chengmei123@localhost:5432/cm_db"
+            "postgresql+psycopg2://lumbarv2:housbird@localhost:5434/cm_db"
     SQLALCHEMY_BINDS            = None
     SQLALCHEMY_NATIVE_UNICODE   = None
     SQLALCHEMY_ECHO             = False  # for debug
@@ -35,20 +35,20 @@ class Config( object ):
     CACHE_DEFAULT_TIMEOUT   = 300           # as default
     CACHE_THRESHOLD         = 500           # as default
     CACHE_REDIS_HOST        = '127.0.0.1'
-    CACHE_REDIS_PORT        = 6379          # as default
-    CACHE_REDIS_PASSWORD    = 'chengmei123'
-    CACHE_REDIS_DB          = 5             # as default
-    CACHE_REDIS_URL         = 'redis://:chengmei123@localhost:6379/5'
+    CACHE_REDIS_PORT        = 6378          # as default
+    CACHE_REDIS_PASSWORD    = 'duocisthemostsunnysite'
+    CACHE_REDIS_DB          = 1             # as default
+    CACHE_REDIS_URL         = 'redis://:duocisthemostsunnysite@localhost:6378/1'
 
     ##########################
     #      redis module      #
     ##########################
 
 #    REDIS_DATABASE          = 0             # deprecated
-    REDIS_URL               = 'redis://:chengmei123@localhost:6379/6'
-    REDIS_PORT        = 6379          # as default
-    REDIS_PASSWORD    = 'chengmei123'
-    REDIS_DB          = 6             # as default
+    REDIS_URL               = 'redis://:duocisthemostsunnysite@localhost:6378/2'
+    REDIS_PORT        = 6378          # as default
+    REDIS_PASSWORD    = 'duocisthemostsunnysite'
+    REDIS_DB          = 2             # as default
 
 
     ##########################
