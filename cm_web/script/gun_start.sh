@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 BASE_PATH=$CM_BACKEND_DIR
 SCRIPT_PATH=$BASE_PATH/cm_web/script
 CONF_PATH=$SCRIPT_PATH
