@@ -2,8 +2,8 @@
 BASE_PATH=$CM_BACKEND_DIR
 SCRIPT_PATH=$BASE_PATH/cm_web/script
 CONF_PATH=$SCRIPT_PATH
-EXE_PATH=/home/cmweb/project/venv/bin
-PID_FILE=/var/run/cmweb/gunicorn/gunicorn_cmweb.pid
+EXE_PATH=/home/lumbarv2/project/venv/bin
+PID_FILE=/var/run/lumbarv2_web/gunicorn/gunicorn_cmweb.pid
 
 export PROJ_PATH=$BASE_PATH
 export PYTHONPATH=$CM_BACKEND_DIR:$PYTHONPATH

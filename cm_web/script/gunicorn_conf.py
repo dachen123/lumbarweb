@@ -29,17 +29,17 @@ daemon = True
 
 debug=False
 
-pidfile = '/var/run/cmweb/gunicorn/gunicorn_cmweb.pid'
+pidfile = '/var/run/lumbarv2_web/gunicorn/gunicorn_cmweb.pid'
 user = 'cmweb'
 group = 'cmweb'
 
 x_forwarded_for_header = 'X-FORWARDED-FOR'
 
-accesslog = '/var/log/cmweb/gunicorn/access'
-errorlog = '/var/log/cmweb/gunicorn/error'
+accesslog = '/var/log/lumbarv2_web/gunicorn/access'
+errorlog = '/var/log/lumbarv2_web/gunicorn/error'
 loglevel = 'debug'
 
-proc_name = 'gunicorn_cmweb'
+proc_name = 'gunicorn_lumbarv2_web'
 
 pythonpath = os.getenv('PYTHONPATH')
 import sys
