@@ -1,0 +1,50 @@
+.cm-about-tab2{
+    margin-top:100px;
+    text-align:center;
+}
+
+.cm-about-tab3{
+    height:400px!important;
+    text-align:center;
+}
+
+.cm-about-tab4{
+    height:400px!important;
+    text-align:center;
+}
+.cm-about-tab3 > h3{
+    padding-top:160px!important;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+
+
+@media (max-width: 771px){
+
+    .cm-about-tab2 .cm-tab2-content{
+        padding-top:40px!important; 
+    }
+    .text-content > p{
+        font-size: 14px;
+        padding: 0 35px;
+        padding-top: 15px;
+        margin-left: 0px!important;
+        width: 100%;  
+    }
+    .text-content.bg-video-content{
+        top: 0px;
+        height: 400px;
+        background: url('http://www.idgvc.com/frontend/images/mobi/2-2.jpg') no-repeat 0 0;
+        background-size: cover;
+    
+    }
+    .cm-about-tab3 > p{
+        padding-top:120px!important; 
+    }
+}

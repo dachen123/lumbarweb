@@ -1,0 +1,138 @@
+
+@charset "utf-8";
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #7f7f7f;
+  background: #fff;
+  height: 100%;
+  position: relative;
+}
+
+.news-show-section{
+    margin-top:100px;
+}
+
+.cm-project-nav{
+    min-height:400px;
+}
+
+.img-wrap{
+    position:relative;
+}
+.img-wrap > img {
+    width: 100%;
+}
+.list-item {
+    cursor: pointer;
+}
+
+
+.cm-list-row .list-item {
+    margin-bottom: 20px;
+    height: 286px;
+    overflow: hidden;
+}
+.img-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+}
+.list-item-date {
+    /* top: 10px; */
+    top: 30%;
+    /* font-size: 24px; */
+}
+
+.list-item-title {
+    top: 36%;
+    width: 80%;
+    font-size: 18px;
+}
+
+.list-item-date, .list-item-title {
+    position: absolute;
+    left: 60px;
+    color: #fff;
+}
+.list-item-content {
+    display: none;
+    width: 90%;
+    color: #666;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+.modal-header{
+    border-bottom:0px;
+}
+
+.modal-content{
+    border-radius:0px;
+    border:0px;
+}
+.modal-dialog{
+    width:60%;
+}
+#modal-news-header img{
+    width:100%;
+}
+
+.bg-white {
+    position: relative;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+#content {
+    width: 680px;
+    margin: 0 auto;
+}
+
+
+@media (max-width: 770px){
+    .cm-list-row .list-item {
+        margin-bottom: 15px;
+        height: 180px;
+    }
+    .cm-list-row .list-item-date, .cm-list-row .list-item-title {
+        left: 30px;
+    }
+    .cm-list-row .list-item-date {
+        top: 35%;
+    }
+    .cm-list-row .list-item h3 {
+        font-size: 14px;
+    }
+    /* .col-sm-6 { */
+    /*     width: 50%; */
+    /*  */
+    /* } */
+    #content {
+        width: auto;
+        margin: 0;
+    }
+    .modal-dialog{
+        width:90%; 
+    }
+    .navbar-brand > #zh-logo {
+        font-size: 17px!important;
+    }
+    .navbar-brand > #us-logo {
+        font-size: 8px!important;
+    }
+    .text-logo{
+        padding-left:0px!important; 
+    }
+}
+

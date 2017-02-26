@@ -1,0 +1,201 @@
+@charset "utf-8";
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "\5B8B\4F53", simsun, sans-serif;
+	color: #666;
+}
+body{
+    background-color: rgb(231, 231, 231);
+    font: 200 14px "Myriad Set Pro", "Hiragino Sans GB W3", 微软雅黑, YaHei, "Microsoft YaHei", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif, SHSCN, "Open Sans";
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.7;
+  color: #7f7f7f;
+  /* background: #fff; */
+  height: 100%;
+  position: relative;
+}
+#cm-Carousel {
+	margin: 50px 0 0 0;
+}
+
+#team-show-section{
+    margin-top:100px;
+}
+.img-warp {
+    float: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
+.modal-header{
+    border-bottom:0px;
+}
+.modal-content{
+    border-radius:0px;
+    border:0px;
+}
+.modal-dialog{
+    width:370px;
+}
+#person-pic img{
+    width:100%;
+    height:133%;
+}
+
+/* .show { */
+/*     display: block !important; */
+/*     display: block !important; */
+/* } */
+.name.show {
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.7);
+    /* opacity: 0.5; */
+    width: 101%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    display: none !important;
+}
+
+.img-warp:hover .show  {
+    display: block !important;
+}
+
+.img-warp .name {
+    display: none;
+}
+
+.carousel-control.left {
+    left: -100px;
+    background-image: none;
+}
+.carousel-inner{
+    margin-left:50px;
+}
+
+.carousel-inner .item{
+    height:524px;
+    background-color:#fff;
+}
+
+.carousel-control.right {
+    right: -100px;
+    background-image: none;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+
+
+@media (min-width: 772px){
+    #team-show-section {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px){
+    #team-show-section {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px){
+    #team-show-section {
+        width: 1040px;
+    }
+}
+
+/*没有小于768px，是因为Bootstrap3以移动端优先设计*/
+
+/* 小屏幕（平板，大于等于768px） */
+@media (min-width: 768px) {
+}
+
+/* 中等屏幕（桌面显示器，大于等于992px） */
+@media (min-width: 992px) {
+}
+
+/* 大屏幕（大桌面显示器，大于等于1200px） */
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 770px){
+}
+
+@media (max-width: 770px){
+    .img-warp .name {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        margin: 0;
+        color: #fff;
+        z-index: 1;
+        padding-left: 10px;
+        height: 30px;
+        width: 100%;
+        line-height: 30px;
+    }
+    .img-warp img {
+        width: 100%;
+        height: 100%!important;
+    }
+    .carousel-control {
+        display: none;
+    }
+    .fluid.container {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .carousel-inner .item .border {
+        max-height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 1px;
+    }
+    .img-warp {
+        width: 33%;
+        height:176px;
+    }
+    .carousel-inner{
+        margin-left:0px;
+    }
+    .carousel-inner .item{
+        height:auto;
+        width:100%;
+        display:block;
+        float:left;
+    }
+    .carousel-indicators{
+        display:none; 
+    }
+    .navbar-brand > #zh-logo {
+        font-size: 17px;
+    }
+    .navbar-brand > #us-logo {
+        font-size: 8px;
+    }
+    .text-logo{
+        padding-left:0px!important; 
+    }
+}
+

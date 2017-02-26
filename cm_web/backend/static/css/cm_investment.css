@@ -1,0 +1,36 @@
+.item-box-desc{
+    text-align:center;
+}
+
+.item-box {
+    background: #fff;
+    overflow: hidden;
+    margin: 16px 0;
+    width: 100%;
+    position: relative;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.item-media{
+    text-align:center;
+}
+
+.item-media img{
+    display:inline-block;
+}
+
+.cm-items-ul>li{
+    list-style:none;
+}
+.investment-show-section{
+    margin-top:100px;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+

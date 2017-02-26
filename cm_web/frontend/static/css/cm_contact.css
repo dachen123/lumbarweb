@@ -1,0 +1,75 @@
+@charset "utf-8";
+body{
+    background-color: rgb(231, 231, 231);
+    font: 200 14px "Myriad Set Pro", "Hiragino Sans GB W3", 微软雅黑, YaHei, "Microsoft YaHei", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif, SHSCN, "Open Sans";
+}
+
+
+@charset "utf-8";
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.7;
+  color: #7f7f7f;
+  /* background: #fff; */
+  height: 100%;
+  position: relative;
+}
+
+
+left {
+    float: left!important;
+}
+
+right {
+    float: right!important;
+}
+
+.col-md-6 {
+    width: 48%!important;
+    margin-bottom: 3em;
+}
+
+.cm-addr-show{
+    margin-top:100px;
+}
+.contact-address h3 {
+    font-size: 36px;
+    padding-left: 1.2em;
+}
+
+.addr p {
+    margin-bottom: 4px!important;
+    font-size: 12px!important;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+
+@media (max-width: 770px){
+    .left, .right {
+        float: none!important;
+    }
+
+}
+@media (max-width:770px){
+   .col-md-6 {
+        width: 100%!important;
+    } 
+    .addr h3, .addr p {
+        padding-left: 1.2em;
+    }
+    .navbar-brand > #zh-logo {
+        font-size: 17px;
+    }
+    .navbar-brand > #us-logo {
+        font-size: 8px;
+    }
+    .text-logo{
+        padding-left:0px!important; 
+    }
+}

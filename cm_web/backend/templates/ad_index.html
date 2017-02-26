@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>诚美管理后台</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/be/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="static/be/css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="static/be/css/sb-admin-2.css" rel="stylesheet">
+    <link href="static/be/css/ad_common.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/be/css/croppie.css">
+
+    <!-- Morris Charts CSS -->
+    <!-- <link href="../vendor/morrisjs/morris.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts -->
+    <link href="static/be/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="ad_index">诚美管理后台</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <!-- <li><a href="#"><i class="fa fa&#45;user fa&#45;fw"></i> User Profile</a> -->
+                        <!-- </li> -->
+                        <!-- <li><a href="#"><i class="fa fa&#45;gear fa&#45;fw"></i> Settings</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="divider"></li> -->
+                        <li><a href="javascript:logout()"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="ad_index"><i class="fa fa-dashboard fa-fw"></i>首页轮播图</a>
+                        </li>
+                        <li>
+                            <a href="ad_team"><i class="fa fa-table fa-fw"></i>团队成员</a>
+                        </li>
+                        <!-- <li> -->
+                        <!--     <a href="ad_investment_type"><i class="fa fa&#45;dashboard fa&#45;fw"></i>投资项目类别</a> -->
+                        <!-- </li> -->
+                        <li>
+                            <a href="ad_investment_pm"><i class="fa fa-table fa-fw"></i>投资项目</a>
+                        </li>
+                        <li>
+                            <a href="ad_news"><i class="fa fa-edit fa-fw"></i>新闻</a>
+                        </li>
+                        <li>
+                            <a href="ad_about"><i class="fa fa-edit fa-fw"></i>关于我们</a>
+                        </li>
+                        <li>
+                            <a href="ad_addr"><i class="fa fa-edit fa-fw"></i>联系地址</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+             <div id="pane-functional-btn-area">
+                 <!-- <div id="right&#45;area"> -->
+                     <a id="popup-post-layer" class="btn btn-default">添加</a>
+                 <!-- </div> -->
+             </div>
+             <hr/>
+             <ol id="image-list-ol">
+             </ol>
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- 模态框声明-->
+    <div class="modal fade" id="post-image-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">添加图片</h4>
+    			</div>
+    			<div class="modal-body">
+                    <input id="post-type" style="display:none"></input>
+                    <input id="image-id" style="display:none"></input>
+    				<div class="container-fluid">
+                        <form class="form-horizontal">
+
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">上传首页图</label>
+                        		<div class="col-sm-10 input-group">
+                        			<input id="image-url" type="text" class="form-control" >	
+		                            <div class="input-group-addon">
+                                        <button class="" type="text" type="button">
+                                            <span>上传</span> 
+                                            <input type="file" id="carousel-upload" class="upload-input" value="选择图片文件" /> 
+                                        </button>
+
+                                    </div>
+                        		</div>
+                        	</div>
+                    	    <div class="form-group">
+                    	    	<label class="col-sm-2 control-label">图片标题</label>
+                    	    	<div class="col-sm-10">
+                    	    		<input id="image-title" type="text" class="form-control" >	
+                    	    	</div>
+                    	    </div>
+                    	    <div class="form-group">
+                    	    	<label class="col-sm-2 control-label">图片内容</label>
+                    	    	<div class="col-sm-10">
+                    	    		<input id="image-content" type="text" class="form-control" >	
+                    	    	</div>
+                    	    </div>
+
+
+                            <div id="image-post">
+                                <a id="post-image" class="btn btn-default">提交</a>
+                            </div>
+                        
+                        </form>
+    
+
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+    <!-- 模态框声明-->
+    <div class="modal fade" id="crop-carousel-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">图片裁剪</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="container-fluid">
+    
+                        <div id="crop-pic-layer" class="col-md-12">
+                            <div class="crop"> 
+                                <div id="upload-demo"></div> 
+                                <button id="execute-crop" class="upload-result">提交</button> 
+                                <!-- <button id="upload&#45;pic" class="">提交</button>  -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="is-crop" name="is_crop" type="checkbox"  checked>
+                                        裁剪
+                                    </label>
+                                </div>
+
+                            </div> 
+                            <input id="crop-result"></input> 
+                        </div>
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+
+    <!-- jQuery -->
+    <script src="static/be/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/be/js/bootstrap.min.js"></script>
+    <script src="http://gosspublic.alicdn.com/aliyun&#45;oss&#45;sdk&#45;4.3.0.min.js"></script>
+    <script src="static/be/js/croppie.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="static/be/js/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="static/be/js/sb-admin-2.js"></script>
+    <script src="static/be/js/ad_index.js"></script>
+
+</body>
+
+</html>

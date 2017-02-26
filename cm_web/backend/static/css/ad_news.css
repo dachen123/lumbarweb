@@ -1,0 +1,26 @@
+#pane-functional-btn-area{
+    width:100%;
+}
+
+
+#pane-functional-btn-area>a{
+    display:inline-block;
+
+    float:right;
+}
+
+#pane-functional-btn-area>a::after{
+    display:block;
+    clear:both;
+}
+#pane-functional-btn-area::after{
+
+    display:block;
+    clear:both;
+    content:"clear"; 
+    height:0;
+    overflow:hidden; 
+    visibility:hidden;
+
+}
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="腰椎专家">
+    <meta name="author" content="jianwen">
+
+    <title>后台登录</title>
+
+
+</head>
+
+<body>
+    <h3>您不是管理员，请以管理员身份登录（3秒钟后自动跳转)</h3>
+
+    <script src="http://file-lumbar.b0.upaiyun.com/static/js/config.js"></script>
+    <script>
+           setTimeout("window.location.href='"+config.server_domain+"/admin'",3000);
+    </script>
+
+</body>
+</html>

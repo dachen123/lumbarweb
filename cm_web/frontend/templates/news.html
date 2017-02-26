@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>新闻</title>
+	<link rel="stylesheet" href="static/fe/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/fe/css/cm_news.css">
+	<link rel="stylesheet" href="static/fe/css/common.css">
+    <link rel="shortcut icon" href="static/fe/img/chengmei.ico">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<!-- <a href="#" class="navbar&#45;brand logo">诚美投资</a> -->
+            <a href="/" class="navbar-brand logo" style="padding:0"><img src="static/fe/img/logo.png" alt="诚美投资" style="max-height:50px;"></img></a>
+            <a href="/" class="navbar-brand logo text-logo" style="padding:14px;line-height:1">&nbsp;&nbsp;<span id="zh-logo">诚美创投</span><span id="us-logo">&nbsp;CHENGMEI&nbsp;VENTURE&nbsp;CAPITAL</span></a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+				<li><a href="team"><span class="glyphicon glyphicon-list"></span> 团队</a></li>
+				<li><a href="investment"><span class="glyphicon glyphicon-flag"></span> 投资公司</a></li>
+				<li class="active"><a href="news"><span class="glyphicon glyphicon-eye-open"></span> 新闻</a></li>
+				<li><a href="about_us"><span class="glyphicon glyphicon-modal-window"></span> 关于我们</a></li>
+				<li><a href="contact_us"><span class="glyphicon glyphicon-map-marker"></span> 联系方式</a></li>
+				<li><a href="http://before.chengmeipe.com"> 投前管理</a></li>
+				<li><a href="http://after.chengmeipe.com"> 投后管理</a></li>
+
+			</ul>	
+		</div>
+	</div>
+</nav>
+
+<div class="container news-show-section">
+    <div class="cm-project-nav">
+        <ul class="nav nav-tabs">
+            <li id="li-tab-all" class="active"><a id="a-tab-all" href="#tab-all"  data-toggle="tab"  class="tab-li-class" >所有新闻</a></li>
+            {% for it in news_type %}
+            <li id="{{ 'li-tab-'+it.news_type_id }}" class="tab-li-class"><a id="{{ 'a-tab-'+it.news_type_id }}" href="{{ '#tab-'+it.news_type_id }}"  data-toggle="tab"  class=" tab-li-class" >{{ it.type_name }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content" style="padding:10px;">
+        	<div class="tab-pane fade in active" id="tab-all">
+                <div id="row-all" class="row cm-list-row">
+                    {% for n in news_list %}
+                    <div id="{{ 'news-' + n.news_id }}" class="col-md-6 col-sm-6 col-xs-12 list-item">
+                        <div class="img-wrap">
+                            <img src="{{ n.cover_image }}" alt="">
+                            <div class="img-cover"></div>
+                        </div>
+                        <div class="list-item-date">{{ n.create_time }}</div>
+                        <h3 class="list-item-title">{{ n.title }}</h3>
+                        <!-- <div class="list&#45;item&#45;content"> -->
+                        <!--   请大家关注此条郑重声明。 -->
+                        <!-- </div> -->
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% for it in news_type %}
+            <div class="tab-pane fade" id="{{ 'tab-'+it.news_type_id }}">
+                <div id="{{ 'row-' + it.news_type_id }}" class="row cm-list-row">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+	<footer id="cm-footer" role="contentinfo">
+	
+		<div class="container">
+			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>关于我们</h3>
+                <p>北京诚美天华管理咨询有限责任公司</p>
+                <p>霍尔果斯诚美创业投资有限公司</p>
+
+			</div>
+			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>商业计划书</h3>
+                <a href="mailto:bp@chengmeipe.com" class="email"><span class="glyphicon glyphicon-envelope"></span>bp@chengmeipe.com</a>
+				<!-- <ul class="float"> -->
+				<!-- 	<li><a href="#">Web Design</a></li> -->
+				<!-- 	<li><a href="#">Branding &#38;amp; Identity</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5</a></li> -->
+				<!-- 	<li><a href="#">HandCrafted Templates</a></li> -->
+				<!-- </ul> -->
+				<!-- <ul class="float"> -->
+				<!-- 	<li><a href="#">Free Bootstrap Template</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5 Template</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5 &#38;amp; CSS3 Template</a></li> -->
+				<!-- 	<li><a href="#">HandCrafted Templates</a></li> -->
+				<!-- </ul> -->
+                <!--  -->
+			</div>
+
+			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>关注我们</h3>
+				<ul class="fh5co-social">
+                    <li><a href="#"><img src="static/fe/img/weibo.png" style="height:32px;"/></a></li>
+                    <li><a href="#"><img src="static/fe/img/weixin.png" style="height:32px;"/></a></li>
+				</ul>
+			</div>
+			
+			
+			<div class="col-md-12 cm-copyright text-center">
+				<p>&copy; 2017  All Rights Reserved. </p>	
+			</div>
+			
+		</div>
+
+	</footer>
+
+
+
+<div class="modal fade" id="modal-news-detail" tabindex="-1">
+	<!-- 窗口声明 -->
+	<div class="modal-dialog">
+		<!-- 内容声明 -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+                        <div id="modal-news-header" class="">
+                            <img id="modal-news-image" src="" alt="介绍图片"></img>
+                            <h3 id="modal-news-title"></h3>
+                            <p id="modal-news-time"></p>
+                        </div>
+                        <div id="modal-news-content" class="">
+                        </div>
+				</div>
+			</div>
+			<!-- <div class="modal&#45;footer"> -->
+			<!-- </div> -->
+		</div>
+	</div>
+</div>
+<!-- 模态框止-->
+
+
+
+<script src="static/fe/js/jquery.min.js"></script>
+<script src="static/fe/js/bootstrap.min.js"></script>
+<script src="static/fe/js/jquery.popupoverlay.js"></script>
+<script src="static/fe/js/config.js"></script>
+<script src="static/fe/js/cm_news.js"></script>
+</body>
+</html>

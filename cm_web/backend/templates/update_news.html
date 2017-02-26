@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>诚美创投团队</title>
+	<link rel="stylesheet" href="static/be/css/bootstrap.min.css">
+
+    <!--引入wangEditor.css-->
+    <link rel="stylesheet" type="text/css" href="static/be/css/wangEditor.min.css">
+	<link rel="stylesheet" href="static/be/css/editor.css">
+	<link rel="stylesheet" href="static/be/css/croppie.css">
+</head>
+<body>
+<div class="container">
+    <div id="cm-editor">
+    </div>
+
+    <form class="form-horizontal">
+    	<div class="form-group">
+    		<label class="col-sm-2 control-label">标题</label>
+    		<div class="col-sm-10">
+    			<input id="news-title" type="text" class="form-control" placeholder="请输入新闻标题">
+    		</div>
+    	</div>
+    
+    	<div class="form-group">
+    		<label class="col-sm-2 control-label">上传新闻封面图</label>
+    		<div class="col-sm-10 input-group">
+    			<input id="pic_url" type="text" class="form-control" >	
+	            <div class="input-group-addon">
+                    <button id="get-pic-btn" class=""  type="button">
+                        <span>上传</span> 
+                        <input type="file" id="upload" class="upload-input" value="选择图片文件" /> 
+                    </button>
+
+                </div>
+    		</div>
+
+    	</div>
+        <div class="form-group">
+        	<label class="col-sm-2 control-label">新闻类型</label>
+        	<div class="col-sm-10">
+	            <select id="news-type" class="form-control">
+                    {% for t in news_type_list %}
+                    <option>{{ t.type_name }}</option>
+                    {% endfor %}
+
+	            </select>
+        	</div>
+        </div>
+
+
+        <div id="form-group">
+            <!-- <button id="member&#45;post" >提交</button> -->
+            <a id="news-post" class="btn btn-default" >提交</a>
+        </div>
+    </form>
+
+    <!-- <div class="input&#45;group custom&#45;search&#45;form"> -->
+    <!--     <label>封面图片</label>     -->
+    <!--     <input id="pic_url" type="text" class="form&#45;control" placeholder="Search..."> -->
+    <!--     <span class="input&#45;group&#45;btn"> -->
+    <!--     <button id="get&#45;pic&#45;btn" class="btn btn&#45;default" type="button"> -->
+    <!--         <span>上传</span>  -->
+    <!--         <input type="file" id="upload" value="选择图片文件" />  -->
+    <!--     </button> -->
+    <!-- </div> -->
+</div>
+
+<!-- 模态框声明 -->
+<div class="modal fade" id="myModal" tabindex="-1">
+	<!-- 窗口声明 -->
+	<div class="modal-dialog">
+		<!-- 内容声明 -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title">图片裁剪</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<!-- <div class="row"> -->
+					<!-- 	<div class="col&#45;md&#45;4">1</div> -->
+					<!-- 	<div class="col&#45;md&#45;4">2</div> -->
+					<!-- 	<div class="col&#45;md&#45;4">3</div> -->
+					<!-- </div> -->
+
+                    <div id="crop-pic-layer" class="col-md-12">
+                        <div class="crop"> 
+                            <div id="upload-demo"></div> 
+                            <button id="execute-crop" class="upload-result">提交</button> 
+                            <!-- <button id="upload&#45;pic" class="">提交</button>  -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="is-crop" name="is_crop" type="checkbox"  checked>
+                                        裁剪
+                                    </label>
+                                </div>
+
+                        </div> 
+                        <input id="crop-result"></input> 
+                    </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<!-- <button class="btn btn&#45;default">注册</button> -->
+				<!-- <button class="btn btn&#45;primary">登录</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="static/be/js/jquery.min.js"></script>
+<script src="static/be/js/bootstrap.min.js"></script>
+<!--引入jquery和wangEditor.js-->   <!--注意：javascript必须放在body最后，否则可能会出现问题-->
+<!-- <script type="text/javascript" src="../dist/js/lib/jquery&#45;1.10.2.min.js"></script> -->
+<script type="text/javascript" src="static/be/js/wangEditor.min.js"></script>
+<!--这里引用jquery和wangEditor.js-->
+<!-- <script type="text/javascript"> -->
+<!--     var editor = new wangEditor('cm&#45;editor'); -->
+<!--     editor.create(); -->
+<!-- </script> -->
+<script type="text/javascript">
+    // var editor = new wangEditor('div1');
+    var editor = new wangEditor('cm-editor');
+
+    // 上传图片（举例）
+    editor.config.uploadImgUrl = '/image_upload';
+
+    // 配置自定义参数（举例）
+    // editor.config.uploadParams = {
+    //     token: 'abcdefg',
+    //     user: 'wangfupeng1988'
+    // };
+
+    // 设置 headers（举例）
+    // editor.config.uploadHeaders = {
+    //     'Accept' : 'text/x-json'
+    // };
+
+    // 隐藏掉插入网络图片功能。该配置，只有在你正确配置了图片上传功能之后才可用。
+    // editor.config.hideLinkImg = true;
+
+    editor.create();
+</script>
+<script src="http://gosspublic.alicdn.com/aliyun&#45;oss&#45;sdk&#45;4.3.0.min.js"></script>
+
+<script src="static/be/js/jquery.popupoverlay.js"></script>
+<script src="static/be/js/croppie.js"></script>
+<script src="static/be/js/metisMenu.min.js"></script>
+
+<script src="static/be/js/sb-admin-2.js"></script>
+
+
+<script src="static/be/js/update_news.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+left {
+    float: left!important;
+}
+
+right {
+    float: right!important;
+}
+
+.col-md-6 {
+    width: 48%!important;
+    margin-bottom: 3em;
+}
+
+.contact-address h3 {
+    font-size: 36px;
+    padding-left: 1.2em;
+}
+
+.addr p {
+    margin-bottom: 4px!important;
+    font-size: 12px!important;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+
+@media (max-width: 770px){
+    .left, .right {
+        float: none!important;
+    }
+
+}
+@media (max-width:770px){
+   .col-md-6 {
+        width: 100%!important;
+    } 
+    .addr h3, .addr p {
+        padding-left: 1.2em;
+    }
+}

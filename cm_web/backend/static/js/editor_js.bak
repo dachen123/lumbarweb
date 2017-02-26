@@ -1,0 +1,167 @@
+
+var crop_blob_file = null;
+$(function(){ 
+    var $uploadCrop; 
+        var ori_url = ""; 
+        function readFile(input) { 
+             if (input.files && input.files[0]) { 
+                var reader = new FileReader(); 
+                 
+                reader.onload = function (e) { 
+                    ori_url = e.target.result;
+                    $uploadCrop.croppie('bind', { 
+                        url: e.target.result 
+                    }); 
+                } 
+                 
+                reader.readAsDataURL(input.files[0]); 
+            } 
+            else { 
+                alert("Sorry - you're browser doesn't support the FileReader API"); 
+            } 
+        } 
+ 
+        $uploadCrop = $('#upload-demo').croppie({ 
+            viewport: { 
+                width: 200, 
+                height: 200, 
+                type: 'square' 
+            }, 
+            boundary: { 
+                width: 300, 
+                height: 300 
+            } 
+        }); 
+ 
+        $('#upload').on('change', function () {  
+            $(".crop").show(); 
+            readFile(this);  
+            $('#upload-demo').croppie('bind',{
+                url:ori_url 
+            });
+        }); 
+        $('#execute-crop').on('click', function (ev) { 
+            $uploadCrop.croppie('result', 'blob').then(function (resp) { 
+                crop_blob_file = resp;
+                popupResult({ 
+                    src: resp 
+                }); 
+            }); 
+        }); 
+
+        $('#get-pic-btn').on('click',function(){
+            initpopup() 
+        });
+         
+    function popupResult(result) { 
+        var html; 
+        if (result.html) { 
+            html = result.html; 
+        } 
+        if (result.src) { 
+            html = '<img src="' + result.src + '" />'; 
+        } 
+        $("#crop-result").val(result.src); 
+    } 
+
+    function initpopup(){
+        // $('#detail').popup({
+        //     scrolllock: true,
+        //     autoopen: true,
+        //     color: '#e7e7e7',
+        //     blur: false,
+        //     opacity: 0.9
+        // });
+		$('#myModal').modal('show');
+        
+    
+    }
+}); 
+
+var appServer = 'http://127.0.0.1:7777/get_oss_token';
+var bucket = 'chengmeitest';
+var region = 'oss-cn-beijing';
+var urllib = OSS.urllib;
+var OSS = OSS.Wrapper;
+var STS = OSS.STS;
+var applyTokenDo = function (func) {
+  var url = appServer;
+  // return urllib.request(url, {
+  //   method: 'GET'
+  // }).then(function (result) {
+  //   var creds = JSON.parse(result.data);
+  //   var client = new OSS({
+  //     region: region,
+  //     accessKeyId: creds.AccessKeyId,
+  //     accessKeySecret: creds.AccessKeySecret,
+  //     stsToken: creds.SecurityToken,
+  //     bucket: bucket
+  //   });
+  //   return func(client);
+  // });
+ 
+     $.ajax({ 
+         type: "GET", 
+         url: appServer, 
+         dataType: "json", 
+         beforeSend: function(){ 
+         }, 
+         success: function(json){ 
+             if (json.error_code == "OK"){
+                    var client = new OSS({
+                      region: region,
+                      accessKeyId: json.result.access_key_id,
+                      accessKeySecret: json.result.access_key_secret,
+                      stsToken: json.result.security_token,
+                      bucket: bucket
+                    });
+                    return func(client);
+             }
+             else
+                 alert(JSON.stringify(json.message));
+         },
+          error:function(){alert("错误：");}
+     }); 
+
+};
+
+function dataURLtoBlob( dataurl ) {
+    if ( dataurl == '' ){
+        alert("尚未选择文件");
+        return;
+    
+    }
+    var arr = dataurl.split(',');
+    bstr = window.atob(arr[1]);
+    n = bstr.length;
+    u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr],{"type":"image/PNG"});
+}
+
+var progress = function (p) {
+  return function (done) {
+    var bar = document.getElementById('progress-bar');
+    bar.style.width = Math.floor(p * 100) + '%';
+    bar.innerHTML = Math.floor(p * 100) + '%';
+    done();
+  }
+};
+var uploadFile = function (client) {
+  var file = document.getElementById('crop-result').value;
+  // var file = document.getElementById('upload').files[0];
+  // var key = document.getElementById('object-key-file').value.trim() || 'object';
+  var key = 'img/aaa.jpg';
+  // console.log(file.name + ' => ' + key);
+  return client.multipartUpload(key, new File([crop_blob_file],"crop.png")).then(function (res) {
+    console.log('upload success: %j', res);
+    return listFiles(client);
+  });
+};
+window.onload = function () {
+  document.getElementById('upload-pic').onclick = function () {
+    applyTokenDo(uploadFile);
+  }
+};

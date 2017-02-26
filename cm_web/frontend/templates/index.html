@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+	<title>诚美创投</title>
+	<link rel="stylesheet" href="static/fe/css/bootstrap.min.css">
+	<link rel="stylesheet" href="static/fe/css/animate.css">
+	<link rel="stylesheet" href="static/fe/css/common.css">
+	<link rel="stylesheet" href="static/fe/css/index.css">
+    <link rel="shortcut icon" href="static/fe/img/chengmei.ico">
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+            <!-- <a href="#" class="navbar&#45;brand logo" style="padding:0"><img src="static/fe/img/logo.png" alt="诚美投资" style="max&#45;height:50px;"></img>&#38;nbsp;&#38;nbsp;<span id="zh&#45;logo">诚美创投</span><span id="us&#45;logo">&#38;nbsp;CHENGMEI&#38;nbsp;VENTURE&#38;nbsp;CAPITAL</span></a> -->
+            <a href="/" class="navbar-brand logo" style="padding:0"><img src="static/fe/img/logo.png" alt="诚美投资" style="max-height:50px;"></img></a>
+            <a href="/" class="navbar-brand logo text-logo" style="padding:14px;line-height:1">&nbsp;&nbsp;<span id="zh-logo">诚美创投</span><span id="us-logo">&nbsp;CHENGMEI&nbsp;VENTURE&nbsp;CAPITAL</span></a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+				<li><a href="team"><span class="glyphicon glyphicon-list"></span> 团队</a></li>
+				<li><a href="investment"><span class="glyphicon glyphicon-flag"></span> 投资公司</a></li>
+				<li><a href="news"><span class="glyphicon glyphicon-eye-open"></span> 新闻</a></li>
+				<li><a href="about_us"><span class="glyphicon glyphicon-modal-window"></span> 关于我们</a></li>
+				<li><a href="contact_us"><span class="glyphicon glyphicon-map-marker"></span> 联系方式</a></li>
+				<li><a href="http://before.chengmeipe.com"> 投前管理</a></li>
+				<li><a href="http://after.chengmeipe.com"> 投后管理</a></li>
+			</ul>	
+		</div>
+	</div>
+</nav>
+
+
+<header>
+<div id="cm-Carousel" class="carousel slide js-fullheight">
+	<ol class="carousel-indicators">
+        {% for i in range (0,cl_list|length) %}
+        {% if i == 0 %}
+        <li data-target="#cm-Carousel" data-slide-to="{{ i }}" class="active"></li>
+		<!-- <li data&#45;target="#cm&#45;Carousel" data&#45;slide&#45;to="1"></li> -->
+		<!-- <li data&#45;target="#cm&#45;Carousel" data&#45;slide&#45;to="2"></li> -->
+        {% else %}
+        <li data-target="#cm-Carousel" data-slide-to="{{ i }}" class=""></li>
+        {% endif %}
+        {% endfor %}
+	</ol>
+	<div class="carousel-inner js-fullheight">
+
+        {% for i in range (0,cl_list|length) %}
+        {% if i == 0 %}
+        <div class="item active js-fullheight" style="background-image:url('{{ cl_list[i].image }}');">
+			<!-- <img src="static/fe/img/slide_1.jpg" alt="第一张"> -->
+		   		<div class="container">
+		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   				<div class="slider-text-inner">
+                            <h2>{{ cl_list[i].title }}</h2>
+		   				</div>
+		   			</div>
+		   		</div>
+
+
+		</div>
+        {% else %}
+        <div class="item js-fullheight" style="background-image:url('{{ cl_list[i].image }}');">
+			<!-- <img src="static/fe/img/slide_2.jpg" alt="第二张"> -->
+		   		<div class="container">
+		   			<div class="col-md-10 col-md-offset-1 text-center js-fullheight slider-text">
+		   				<div class="slider-text-inner">
+                            <h2>{{ cl_list[i].title }}</h2>
+		   				</div>
+		   			</div>
+		   		</div>
+		</div>
+        {% endif %}
+        {% endfor %}
+		<!-- <div class="item" style="background&#45;image:url('static/fe/img/slide_3.jpg');"> -->
+		<!-- 	<!&#45;&#45; <img src="static/fe/img/slide_3.jpg" alt="第三张"> &#45;&#45;> -->
+		<!--    		<div class="container"> -->
+		<!--    			<div class="col&#45;md&#45;10 col&#45;md&#45;offset&#45;1 text&#45;center js&#45;fullheight slider&#45;text"> -->
+		<!--    				<div class="slider&#45;text&#45;inner"> -->
+		<!--    					<h2>Take Your Business To The Next Level</h2> -->
+		<!--    				</div> -->
+		<!--    			</div> -->
+		<!--    		</div> -->
+		<!-- </div> -->
+	</div>
+	<a href="#cm-Carousel" data-slide="prev" class="carousel-control left">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+	</a>
+	<a href="#cm-Carousel" data-slide="next" class="carousel-control right">
+		<span class="glyphicon glyphicon-chevron-right"></span>
+	</a>
+</div>
+</header>
+
+    <div style="clear:both;"></div>
+	<div id="cm-team" class="animate-box">
+		<div class="container custom-width">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center team-heading">
+					<h2>投资方向</h2>
+					<p> </p>
+				</div>
+                {% for t in tab_list %}
+				<div class="col-md-4 text-center item-block">
+                    <span class="icon"><img src="{{ t.bg_image }}" alt="" class="img-responsive"></span>
+                    <h3>{{ t.title }}</h3>
+                    <p>{{ t.slogan }}</p>
+				</div>
+                {% endfor %}
+				<!-- <div class="col&#45;md&#45;4 text&#45;center item&#45;block"> -->
+				<!-- 	<span class="icon"><img src="static/fe/img/30.svg" alt="策略" class="img&#45;responsive"></span> -->
+				<!-- 	<h3>影视</h3> -->
+				<!-- 	<p></p> -->
+				<!-- 	<!&#45;&#45; <p><a href="#" class="btn btn&#38;#45;primary btn&#38;#45;outline with&#38;#45;arrow">了解更多 <i class="icon&#38;#45;arrow&#38;#45;right"></i></a></p> &#45;&#45;> -->
+				<!-- </div> -->
+				<!-- <div class="col&#45;md&#45;4 text&#45;center item&#45;block"> -->
+				<!-- 	<span class="icon"><img src="static/fe/img/18.svg" alt="Free HTML5 Templates" class="img&#45;responsive"></span> -->
+				<!-- 	<h3>娱乐</h3> -->
+				<!-- 	<p></p> -->
+				<!-- 	<!&#45;&#45; <p><a href="#" class="btn btn&#38;#45;primary btn&#38;#45;outline with&#38;#45;arrow">了解更多 <i class="icon&#38;#45;arrow&#38;#45;right"></i></a></p> &#45;&#45;> -->
+				<!-- </div> -->
+				<!-- <div class="col&#45;md&#45;4 text&#45;center item&#45;block"> -->
+				<!-- 	<span class="icon"><img src="static/fe/img/27.svg" alt="Free HTML5 Templates" class="img&#45;responsive"></span> -->
+				<!-- 	<h3>教育</h3> -->
+				<!-- 	<p></p> -->
+				<!-- 	<!&#45;&#45; <p><a href="#" class="btn btn&#38;#45;primary btn&#38;#45;outline with&#38;#45;arrow">了解更多<i class="icon&#38;#45;arrow&#38;#45;right"></i></a></p> &#45;&#45;> -->
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+
+	<div class="cm-section-with-image">
+		
+        {% if pic1 %}
+        <img src="{{ pic1.image }}" alt="" class="img-responsive">
+		<div id="cm-box-1" class="cm-box animate-box">
+            <h2>{{ pic1.title }}</h2>
+            <p>{{ pic1.content }}</p>
+			<!-- <p><a href="#" class="btn btn&#45;primary btn&#45;outline with&#45;arrow">Get started <i class="icon&#45;arrow&#45;right"></i></a></p> -->
+		</div>
+        {% endif %}
+		
+	</div>
+
+	<div id="cm-investment" class="animate-box">
+		<div class="container custom-width">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center cm-heading">
+					<h2>明星项目</h2>
+					<p> </p>
+				</div>
+                {% for im in im_list %}
+                <div id="{{ 'im-' + im.im_id }}"  class="col-md-4 text-center item-block"  data-company_name="{{ im.company_name }}" data-cover_image="{{ im.cover_image }}" data-company_url="{{ im.company_url }}" data-company_addr="{{ im.company_addr }}" data-pm_manager="{{ im.pm_manager }}" data-company_introduce="{{ im.company_introduce }}" >
+					<blockquote>
+                        <img src="{{ im.cover_image}}"/>
+                        <p><span class="investment-name"><cite>{{ im.company_name }}</cite></span></p>
+
+					</blockquote>
+				</div>
+                {% endfor %}
+				<!-- <div class="col&#45;md&#45;4 text&#45;center item&#45;block"> -->
+				<!-- 	<blockquote> -->
+                <!--         <img src="http://www.gsrventures.cn/uploads/investment/2_Internet/02_AdMaster.jpg"/> -->
+                <!--  -->
+				<!-- 		<p><span class="investment&#45;name"><cite>精硕科技</cite></span></p> -->
+				<!-- 	</blockquote> -->
+				<!-- </div> -->
+				<!-- <div class="col&#45;md&#45;4 text&#45;center item&#45;block"> -->
+				<!-- 		 -->
+				<!-- 	<blockquote> -->
+                <!--         <img src="http://www.gsrventures.cn/uploads/investment/2_Internet/02_AdMaster.jpg"/> -->
+                <!--  -->
+				<!-- 		<p><span class="investment&#45;name"><cite>精硕科技</cite></span></p> -->
+				<!-- 	</blockquote> -->
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+
+	<div id="cm-grid-news" class="animate-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center cm-heading">
+					<h2 style="margin-top:0px;">业界新闻</h2>
+					<p> </p>
+				</div>
+			</div>
+		</div>
+
+
+        {% for news in news_list %}
+        <div id="{{ 'news-' + news.news_id }}" class="cm-col">
+            <div href class="item-grid one" style="background-image: url({{ news.cover_image }})">
+				<div class="v-align">
+					<div class="v-align-middle">
+                        <h3 class="title">{{ news.title }}</h3>
+                        <h5 class="category">{{ news.create_time }}</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% endfor %}
+		<!-- <div class="cm&#45;col"> -->
+		<!-- 	<a href="#" class="item&#45;grid one" style="background&#45;image: url(http://7vilq9.com2.z0.glb.qiniucdn.com/@/tmp/phpPZW307idg_img_586b7e4045083.jpg)"> -->
+		<!-- 		<div class="v&#45;align"> -->
+		<!-- 			<div class="v&#45;align&#45;middle"> -->
+		<!-- 				<h3 class="title">主席拜访</h3> -->
+		<!-- 				<h5 class="category">2015.6.7.8</h5> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+		<!-- 	</a> -->
+		<!-- </div> -->
+		<!-- <div class="cm&#45;col"> -->
+		<!-- 	<a href="#" class="item&#45;grid one" style="background&#45;image: url(http://7vilq9.com2.z0.glb.qiniucdn.com/@/tmp/phpPZW307idg_img_586b7e4045083.jpg)"> -->
+		<!-- 		<div class="v&#45;align"> -->
+		<!-- 			<div class="v&#45;align&#45;middle"> -->
+		<!-- 				<h3 class="title">主席拜访</h3> -->
+		<!-- 				<h5 class="category">2015.6.7.8</h5> -->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
+		<!-- 	</a> -->
+		<!-- </div> -->
+	</div>
+    <div style="clear:both;"></div>
+    
+    {% if pic2 %}
+    <div class="cm-cta" style="background-image: url({{ pic2.image }});">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="col-md-12 text-center animate-box">
+                <h3>{{ pic2.title }}</h3>
+                <p>{{ pic2.content }}</p>
+			</div>
+		</div>
+	</div>
+    {% endif %}
+
+
+
+	<footer id="cm-footer" role="contentinfo">
+	
+		<div class="container">
+			<div class="col-md-3 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>关于我们</h3>
+                <p>北京诚美天华管理咨询有限责任公司</p>
+                <p>霍尔果斯诚美创业投资有限公司</p>
+			</div>
+			<div class="col-md-6 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>商业计划书</h3>
+				<!-- <ul class="float"> -->
+				<!-- 	<li><a href="#">Web Design</a></li> -->
+				<!-- 	<li><a href="#">Branding &#38;amp; Identity</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5</a></li> -->
+				<!-- 	<li><a href="#">HandCrafted Templates</a></li> -->
+				<!-- </ul> -->
+				<!-- <ul class="float"> -->
+				<!-- 	<li><a href="#">Free Bootstrap Template</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5 Template</a></li> -->
+				<!-- 	<li><a href="#">Free HTML5 &#38;amp; CSS3 Template</a></li> -->
+				<!-- 	<li><a href="#">HandCrafted Templates</a></li> -->
+				<!-- </ul> -->
+                <!--  -->
+                <a href="mailto:bp@chengmeipe.com" class="email"><span class="glyphicon glyphicon-envelope"></span>bp@chengmeipe.com</a>
+			</div>
+
+			<div class="col-md-2 col-md-push-1 col-sm-12 col-sm-push-0 col-xs-12 col-xs-push-0">
+				<h3>关注我们</h3>
+				<ul class="fh5co-social">
+                    <li><a href="#"><img src="static/fe/img/weibo.png" style="height:32px;"/></a></li>
+                    <li><a href="#"><img src="static/fe/img/weixin.png" style="height:32px;"/></a></li>
+				</ul>
+			</div>
+			
+			
+			<div class="col-md-12 cm-copyright text-center">
+				<p>&copy; 2017  All Rights Reserved. </p>	
+			</div>
+			
+		</div>
+
+	</footer>
+
+<!-- 模态框声明-->
+<div class="modal fade" id="company-detail-modal" tabindex="-1">
+	<!-- 窗口声明 -->
+	<div class="modal-dialog company-dialog">
+		<!-- 内容声明 -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title">项目介绍</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+                    <div class="row">
+                        <div id="company-media" class="col-md-6 col-sm-6">
+                            <img src="" alt="介绍图片"></img>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h3 id="modal-company-name"></h3>
+                            <h4>网址</h3>
+                            <p><a href="" target="_blank" id="modal-company-url"></a></p>
+                            <h4>地点</h3>
+                            <p id="modal-company-city"></p>
+                            <h4>公司/项目负责人</h3>
+                            <p id="modal-pm-manager"></p>
+                            <h4>公司简介</h4>
+                            <p id="modal-company-description"></p>
+                        </div>
+                    </div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 模态框止-->
+<div class="modal fade" id="modal-news-detail" tabindex="-1">
+	<!-- 窗口声明 -->
+	<div class="modal-dialog modal-news-dialog">
+		<!-- 内容声明 -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+                        <div id="modal-news-header" class="">
+                            <img id="modal-news-image" src="" alt="介绍图片"></img>
+                            <h3 id="modal-news-title"></h3>
+                            <p id="modal-news-time"></p>
+                        </div>
+                        <div id="modal-news-content" class="">
+                        </div>
+				</div>
+			</div>
+			<!-- <div class="modal&#45;footer"> -->
+			<!-- </div> -->
+		</div>
+	</div>
+</div>
+<!-- 模态框止-->
+
+
+<!-- <footer id="footer"> -->
+<!-- </footer> -->
+
+
+<script src="static/fe/js/jquery.min.js"></script>
+<script src="static/fe/js/bootstrap.min.js"></script>
+<script src="static/fe/js/jquery.waypoints.min.js"></script>
+<script src="static/fe/js/config.js"></script>
+<script src="static/fe/js/index.js"></script>
+</body>
+</html>

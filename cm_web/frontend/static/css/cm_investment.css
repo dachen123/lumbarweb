@@ -1,0 +1,87 @@
+
+@charset "utf-8";
+
+body{
+    background-color: rgb(231, 231, 231);
+    font: 200 14px "Myriad Set Pro", "Hiragino Sans GB W3", 微软雅黑, YaHei, "Microsoft YaHei", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif, SHSCN, "Open Sans";
+}
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.7;
+  color: #7f7f7f;
+  /* background: #fff; */
+  height: 100%;
+  position: relative;
+}
+
+
+.item-box-desc{
+    text-align:center;
+}
+
+.item-box {
+    background: #fff;
+    overflow: hidden;
+    margin: 16px 0;
+    width: 100%;
+    position: relative;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.item-media{
+    text-align:center;
+}
+
+.item-media img{
+    display:inline-block;
+}
+.modal-dialog{
+    width:90%;
+}
+
+.modal-header{
+    border-bottom:0px;
+}
+.modal-content{
+    border-radius:0px;
+    border:0px;
+}
+#company-media img{
+   width:100%; 
+}
+
+.cm-items-ul{
+    padding:0;
+}
+
+.cm-items-ul>li{
+    list-style:none;
+}
+.investment-show-section{
+    margin-top:100px;
+}
+.cm-project-nav{
+    min-height:400px;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px){
+    .navbar-brand > #zh-logo {
+        font-size: 17px;
+    }
+    .navbar-brand > #us-logo {
+        font-size: 8px;
+    }
+    .text-logo{
+        padding-left:0px!important; 
+    }
+}
+
+

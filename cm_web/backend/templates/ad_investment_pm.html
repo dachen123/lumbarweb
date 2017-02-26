@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>诚美管理后台</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/be/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="static/be/css/metisMenu.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="static/be/css/croppie.css">
+
+
+    <!-- Custom CSS -->
+    <link href="static/be/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <!-- <link href="../vendor/morrisjs/morris.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts -->
+    <link href="static/be/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom css -->
+    <link href="static/be/css/ad_common.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index">诚美管理后台</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <!-- <li><a href="#"><i class="fa fa&#45;user fa&#45;fw"></i> User Profile</a> -->
+                        <!-- </li> -->
+                        <!-- <li><a href="#"><i class="fa fa&#45;gear fa&#45;fw"></i> Settings</a> -->
+                        <!-- </li> -->
+                        <!-- <li class="divider"></li> -->
+                        <!-- <li><a href="login"><i class="fa fa&#45;sign&#45;out fa&#45;fw"></i> Logout</a> -->
+                        <!-- </li> -->
+                        <li><a href="javascript:logout()"><i class="fa fa-sign-out fa-fw"></i> 登出</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="ad_index"><i class="fa fa-dashboard fa-fw"></i>首页轮播图</a>
+                        </li>
+                        <li>
+                            <a href="ad_team"><i class="fa fa-table fa-fw"></i>团队成员</a>
+                        </li>
+                        <!-- <li> -->
+                        <!--     <a href="ad_investment_type"><i class="fa fa&#45;dashboard fa&#45;fw"></i>投资项目类别</a> -->
+                        <!-- </li> -->
+                        <li>
+                            <a href="ad_investment_pm"><i class="fa fa-table fa-fw"></i>投资项目</a>
+                        </li>
+                        <li>
+                            <a href="ad_news"><i class="fa fa-edit fa-fw"></i>新闻</a>
+                        </li>
+                        <li>
+                            <a href="ad_about"><i class="fa fa-edit fa-fw"></i>关于我们</a>
+                        </li>
+                        <li>
+                            <a href="ad_addr"><i class="fa fa-edit fa-fw"></i>联系地址</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <ul id="nav" class="nav nav-tabs">
+            	<li class="active"><a href="#add-investment" data-toggle="tab">添加项目</a></li>
+            	<li><a id="tab-all-investment-list" href="#all-investment-list" data-toggle="tab">所有项目列表</a></li>
+            	<li><a id="tab-investment-type-list" href="#investment-type-list" data-toggle="tab">投资类型编辑</a></li>
+            	<li><a id="tab-top-investment-list" href="#top-investment-list" data-toggle="tab">首页展示项目</a></li>
+            </ul>
+            <div class="tab-content" style="padding:10px;">
+            	<div class="tab-pane fade in active" id="add-investment">
+                    <form class="form-horizontal">
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">投资公司名称</label>
+                    		<div class="col-sm-10">
+                    			<input id="company-name" type="text" class="form-control" placeholder="请输入成员名称">
+                    		</div>
+                    	</div>
+                    
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">介绍图片</label>
+                    		<div class="col-sm-10 input-group">
+                    			<input id="company-cover-pic" type="text" class="form-control" >	
+		                        <div class="input-group-addon">
+                                    <button id="get-pic-btn" class="" type="text" type="button">
+                                        <span>上传</span> 
+                                        <input id="company-cover-pic-file" type="file" id="upload" class="upload-input" value="选择图片文件" /> 
+                                    </button>
+
+                                </div>
+                    		</div>
+
+                    	</div>
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">公司网址</label>
+                    		<div class="col-sm-10">
+                    			<input id="company-link-url" type="text" class="form-control" >	
+                    		</div>
+                    	</div>
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">公司地点</label>
+                    		<div class="col-sm-10">
+                    			<input id="company-addr" type="text" class="form-control" >	
+                    		</div>
+                    	</div>
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">项目负责人</label>
+                    		<div class="col-sm-10">
+                    			<input id="man-in-charge" type="text" class="form-control" >	
+                    		</div>
+                    	</div>
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">公司介绍</label>
+                    		<div class="col-sm-10">
+                    			<input id="company-description" type="text" class="form-control" >	
+                    		</div>
+                    	</div>
+                    	<div class="form-group">
+                    		<label class="col-sm-2 control-label">投资类型</label>
+                    		<div class="col-sm-10">
+	                            <select id="company-type" class="form-control">
+                                    {% for i in im_type_list %}
+                                    <option>{{ i.type_name }}</option>
+	                            	<!-- <option>1</option> -->
+	                            	<!-- <option>2</option> -->
+	                            	<!-- <option>3</option> -->
+	                            	<!-- <option>4</option> -->
+                                    {% endfor %}
+
+	                            </select>
+                    		</div>
+                    	</div>
+
+
+                        <div id="post">
+                            <a id="company-post" class="btn btn-default">提交</a>
+                        </div>
+                    
+                    </form>
+                </div>
+            	<div class="tab-pane fade" id="all-investment-list">
+                    <ol id="all-investment-list-ol">
+                    </ol>
+                    <div>
+                        <button id="next-page" style="float:right;">下一页</button>
+                        <button id="prev-page" style="float:right;">上一页</button>
+                    </div>
+
+                </div>
+            	<div class="tab-pane fade" id="investment-type-list">
+                    <div id="pane-functional-btn-area">
+                        <!-- <div id="right&#45;area"> -->
+                            <a id="popup-add-layer" class="btn btn-default">添加</a>
+                        <!-- </div> -->
+                    </div>
+                    <hr/>
+                    <ol id="investment-type-list-ol">
+                    </ol>
+                </div>
+            	<div class="tab-pane fade" id="top-investment-list">
+                    <ol id="top-investment-list-ol">
+                    </ol>
+                </div>
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- 模态框声明-->
+    <div class="modal fade" id="update-investment-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">编辑项目</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="container-fluid">
+                        <input id="update-company-id" style="display:none"></input>
+
+                        <form class="form-horizontal">
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">投资公司名称</label>
+                        		<div class="col-sm-10">
+                        			<input id="update-company-name" type="text" class="form-control" placeholder="请输入成员名称">
+                        		</div>
+                        	</div>
+                        
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">介绍图片</label>
+                        		<div class="col-sm-10 input-group">
+                        			<input id="update-company-cover-pic" type="text" class="form-control" >	
+		                            <div class="input-group-addon">
+                                        <button id="get-pic-btn" class="" type="text" type="button">
+                                            <span>上传</span> 
+                                            <input id="update-company-cover-pic-file" type="file" id="upload" class="upload-input" value="选择图片文件" /> 
+                                        </button>
+
+                                    </div>
+                        		</div>
+
+                        	</div>
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">公司网址</label>
+                        		<div class="col-sm-10">
+                        			<input id="update-company-link-url" type="text" class="form-control" >	
+                        		</div>
+                        	</div>
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">公司地点</label>
+                        		<div class="col-sm-10">
+                        			<input id="update-company-addr" type="text" class="form-control" >	
+                        		</div>
+                        	</div>
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">项目负责人</label>
+                        		<div class="col-sm-10">
+                        			<input id="update-man-in-charge" type="text" class="form-control" >	
+                        		</div>
+                        	</div>
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">公司介绍</label>
+                        		<div class="col-sm-10">
+                        			<input id="update-company-description" type="text" class="form-control" >	
+                        		</div>
+                        	</div>
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">投资类型</label>
+                        		<div class="col-sm-10">
+	                                <select id="update-company-type" class="form-control">
+                                    {% for i in im_type_list %}
+                                    <option>{{ i.type_name }}</option>
+                                    {% endfor %}
+	                                </select>
+
+                        		</div>
+
+
+                        	</div>
+                            <div id="post">
+                                <a id="update-company" class="btn btn-default">提交</a>
+                            </div>
+                        
+                        </form>
+    
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+    <!-- 模态框声明-->
+    <div class="modal fade" id="crop-company-cover-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">图片裁剪</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="container-fluid">
+    
+                        <div id="crop-pic-layer" class="col-md-12">
+                            <div class="crop"> 
+                                <div id="upload-demo"></div> 
+                                <button id="execute-crop" class="upload-result">提交</button> 
+                                <!-- <button id="upload&#45;pic" class="">提交</button>  -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="is-crop" name="is_crop" type="checkbox"  checked>
+                                        裁剪
+                                    </label>
+                                </div>
+
+                            </div> 
+                            <input id="crop-result"></input> 
+                        </div>
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+    <!-- 模态框声明-->
+    <div class="modal fade" id="update-company-cover-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">图片裁剪</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="container-fluid">
+    
+                        <div id="crop-pic-layer" class="col-md-12">
+                            <div class="crop"> 
+                                <div id="upload-demo"></div> 
+                                <button id="execute-crop" class="upload-result">提交</button> 
+                                <!-- <button id="upload&#45;pic" class="">提交</button>  -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input id="is-crop" name="is_crop" type="checkbox"  checked>
+                                        裁剪
+                                    </label>
+                                </div>
+
+                            </div> 
+                            <input id="crop-result"></input> 
+                        </div>
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+
+    <!-- 模态框声明-->
+    <div class="modal fade" id="add-investment-type-modal" tabindex="-1">
+    	<!-- 窗口声明 -->
+    	<div class="modal-dialog">
+    		<!-- 内容声明 -->
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<button class="close" data-dismiss="modal"><span>&times;</span></button>
+    				<h4 class="modal-title">添加投资类型</h4>
+    			</div>
+    			<div class="modal-body">
+    				<div class="container-fluid">
+                        <form class="form-horizontal">
+                        	<div class="form-group">
+                        		<label class="col-sm-2 control-label">投资类型</label>
+                        		<div class="col-sm-10">
+                        			<input id="investment-type-input" type="text" class="form-control" placeholder="请输入成员名称">
+                        		</div>
+                        	</div>
+                            <div id="type-post">
+                                <a id="add-type" class="btn btn-default">提交</a>
+                            </div>
+                        
+                        </form>
+    
+
+    				</div>
+    			</div>
+    			<div class="modal-footer">
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 模态框止-->
+
+
+    <!-- jQuery -->
+    <script src="static/be/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/be/js/bootstrap.min.js"></script>
+    <script src="http://gosspublic.alicdn.com/aliyun&#45;oss&#45;sdk&#45;4.3.0.min.js"></script>
+    <script src="static/be/js/croppie.js"></script>
+
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="static/be/js/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="static/be/js/sb-admin-2.js"></script>
+    <script src="static/be/js/ad_investment_pm.js"></script>
+
+</body>
+
+</html>

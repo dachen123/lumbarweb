@@ -1,0 +1,72 @@
+
+@charset "utf-8";
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  line-height: 1.7;
+  color: #7f7f7f;
+  background: #fff;
+  height: 100%;
+  position: relative;
+}
+
+
+.cm-about-tab{
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    padding-top: 38.5%; 
+    position:relative;
+}
+.tab-cover{
+    position:absolute;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    text-align:center;
+    background: rgba(0, 0, 0, 0.1);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.tab-cover > h3{
+    padding-top:13%!important;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+.tab-cover > p{
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+}
+
+#footer {
+	background-color: #eee;
+	border-top: 1px solid #ccc;
+	padding: 20px;
+	text-align: center;
+}
+
+
+
+@media (max-width: 771px){
+
+    .tab-cover > h3{
+        font-size: 15px;
+    }
+    .tab-cover > p{
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 6px;
+    }
+    .navbar-brand > #zh-logo {
+        font-size: 17px;
+    }
+    .navbar-brand > #us-logo {
+        font-size: 8px;
+    }
+    .text-logo{
+        padding-left:0px!important; 
+    }
+
+}
