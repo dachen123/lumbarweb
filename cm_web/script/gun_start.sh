@@ -7,7 +7,6 @@ PID_FILE=/var/run/lumbarv2_web/gunicorn/gunicorn_lumbarv2_web.pid
 
 export PROJ_PATH=$BASE_PATH
 export PYTHONPATH=$CM_BACKEND_DIR:$PYTHONPATH
-export LD_LIBRARY_PATH=/usr/local/lib
 
 cd $SCRIPT_PATH
 case $1 in                                                                                

@@ -4,7 +4,7 @@ from gevent.pywsgi import WSGIServer
 from cm_web.app import create_app
 from cm_web.storage import db
 
-app = create_app(name='CMWEB')
+app = create_app(name='LUMBARV2_WEB')
 
 
 

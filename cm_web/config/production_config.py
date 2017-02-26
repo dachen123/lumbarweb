@@ -15,7 +15,7 @@ class Config( object ):
     postgres config
     """
     SQLALCHEMY_DATABASE_URI = \
-            "postgresql+psycopg2://lumbarv2:housbird@localhost:5434/cm_db"
+            "postgresql+psycopg2://lumbarv2:housebird@localhost:5435/cm_db"
     SQLALCHEMY_BINDS            = None
     SQLALCHEMY_NATIVE_UNICODE   = None
     SQLALCHEMY_ECHO             = False  # for debug
